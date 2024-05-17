@@ -1,0 +1,179 @@
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:"Poppins" , sans-serif;
+}
+
+
+h1{
+    margin-inline-end: 50px;
+    font-size: 2.5rem;
+}
+
+
+body{
+     display: flex;
+     justify-content:center;
+     align-items:center;
+    background:#1d2b3a;
+
+    /* background color changing for button  */
+
+    /* background-color: #161616; */
+    color:white;
+    min-height:100vh;
+    flex-direction:column;
+    gap:30px;
+
+    /* for glowing button  */
+    overflow: hidden;
+    /* transform: scale(1.2); */
+}
+
+button{
+    color:black;
+}
+
+.inputBox{
+    position:relative;
+    width:250px;
+}
+
+.inputBox input{
+    /* width:100%; */
+    padding:18px;
+    color:#FCFCFC;
+    border:1px solid rgba(255,255,255,0.25);
+    background:#1d2b3a;
+    border-radius:5px;
+    outline:none;
+    transition: 0.5s;
+} 
+
+.inputBox span{
+    position:absolute;
+    left:0px;
+    padding:10px;
+    pointer-event:none;
+    font-size:1em;
+    color:rgba(255,255,255,0.25);
+    text-transform:uppercase;
+    transition: 0.5s;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span
+{
+    color:#00dfc4;
+    transform: translateX(10px) translateY(-7px);
+    padding: 0 10px;
+    background: #1d2b3a;
+    /* font-size:0.65em; */
+    border-left: 0.5px solid #00dfc4;
+    border-right: 0.5px solid #00dfc4;
+    /* letter-spacing: 0.1em; */
+}
+
+
+/* to make full color when search axtive on youtube */
+
+.inputBox:nth-child(2) input:valid ~ span,
+.inputBox:nth-child(2) input:focus ~ span
+{
+    background: #00dfc4;
+    color: #1d2b3a;
+    border-radius:2px;
+}
+ 
+/* here ends what started up  */
+
+
+.inputBox input:valid,
+.inputBox input:focus
+{
+    border: 1px solid #00dfc4;
+}
+
+
+/* button  */
+
+.btn {
+    font-size: 1.2rem;
+    padding:7px 7px;
+    border:none; 
+    outline: none;
+    color: #fff;
+    cursior:pointer;
+    position:relative;
+    z-index:0;
+    border-radius:9px; 
+}
+
+/* button on hover */
+
+.btn::after {
+    content:"";
+    z-index: -1;
+    position: absolute;
+    width:100%;
+    height:100%;
+    background-color:#333;
+    left:0;
+    top:0;
+    border-radius:10px;
+}
+
+
+/* glow */
+
+.btn::before{
+    content:"";
+     background: linear-gradient(
+      45deg,
+      #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5,
+      #002bff, #ff00c8, #ff0000
+    ); 
+
+    position:absolute;
+    top:-2px;
+    left:-2px;
+    background-size:600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter:blur(8px);
+
+     /* animation  */
+
+    animation:glowing 20s linear infinite;
+    transition:opacity .3s ease-in-out;
+    border-radius:10px;
+    opacity:0;
+}
+
+@keyframes glowing {
+
+   0% {background-position: 0 0;}
+   50% {background-position: 400% 0;}
+   100% {background-position: 0 0;}
+}
+
+
+/* on hover */
+
+.btn:hover::before{
+    opacity:1;
+}
+
+
+.btn:active:after {
+    background: transparent;
+}
+
+.btn:active {
+    color:#000;
+    font-weight:bold;
+}
